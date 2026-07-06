@@ -42,7 +42,7 @@ npm run dev
 
 ## 🌍 Live Demo
 
-🔗 https://harshinn-portfolio.vercel.app/
+🔗 https://harshin-portfolio.vercel.app/
 
 ---
 
