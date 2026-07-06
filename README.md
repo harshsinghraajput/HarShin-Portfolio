@@ -1,58 +1,73 @@
-# HarShin-Portfolio
-A Shinchan-themed interactive developer portfolio featuring a 3D model sandbox (Three.js / WebGL), a 3D endless runner arcade game, and a dynamic dual-mode content switcher. Built with HTML5, CSS3 (Tailwind), and vanilla JavaScript.
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HarShin-Portfolio README</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #333; }
+        h1, h2, h3 { color: #000; }
+        code { background: #f4f4f4; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        blockquote { border-left: 5px solid #facc15; padding-left: 15px; font-style: italic; color: #555; }
+        .link-btn { display: inline-block; padding: 10px 20px; background: #000; color: #fff; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+    </style>
+</head>
+<body>
 
-## 🎮 Portfolio Matrix — Harsh Singh
+    <h1>🖍️ HarShin-Portfolio</h1>
+    <p><em>“Action Mask, Beam! ⚡” — Just a developer who enjoys coding almost as much as chocolate-covered biscuits.</em></p>
+    
+    <p>Welcome to the digital playground of <strong>Harsh Singh</strong>. This isn’t your average "Hire me" page; it’s a 3D-accelerated, Shinchan-approved, high-mischief zone.</p>
 
-A Shinchan-themed, interactive developer portfolio featuring a **3D model viewer**, a **3D endless runner arcade game**, and a **dynamic dual-mode content switcher** (Funny / Flirty).
+    <a href="https://harshinn-portfolio.vercel.app/" class="link-btn">Explore the Mischief Here</a>
 
----
+    <h2>🎮 The Portfolio Matrix</h2>
+    <p>A Shinchan-themed, interactive developer portfolio featuring a <strong>3D model viewer</strong>, a <strong>3D endless runner arcade game</strong>, and a <strong>dynamic dual-mode content switcher</strong> (Funny / Flirty).</p>
 
-### 🛠️ Tech Stack & Technologies Used
+    <h2>🛠️ The "Secret Sauce" (Tech Stack)</h2>
+    <table>
+        <tr><th>Category</th><th>The Tools</th></tr>
+        <tr><td>The Skeleton</td><td>HTML5</td></tr>
+        <tr><td>The Style</td><td>CSS3, Tailwind CSS</td></tr>
+        <tr><td>The Brains</td><td>JavaScript (ES6+)</td></tr>
+        <tr><td>The 3D Magic</td><td>Three.js (r128), GLTFLoader</td></tr>
+        <tr><td>The Fuel</td><td>Google Fonts, VS Code</td></tr>
+    </table>
 
-- **HTML5** — Semantic structure, meta tags, embeds
-- **CSS3** — Custom animations (`@keyframes`), grid layouts, transitions, pseudo-elements
-- **Tailwind CSS (CDN)** — Utility-first styling, responsive breakpoints (`sm`, `md`, `lg`), backdrop blur, shadows
-- **Vanilla JavaScript (ES6+)** — DOM manipulation, event listeners, state management, game loop logic
-- **Three.js (r128)** — WebGL 3D rendering engine
-  - `THREE.Scene`, `THREE.PerspectiveCamera`, `THREE.WebGLRenderer`
-  - `THREE.AmbientLight`, `THREE.DirectionalLight`
-  - `THREE.MeshStandardMaterial`, `THREE.BoxGeometry`, `THREE.SphereGeometry`, `THREE.DodecahedronGeometry`, `THREE.CylinderGeometry`, `THREE.ConeGeometry`
-  - `THREE.Box3` — Bounding box calculations for model centering and scaling
-- **GLTFLoader (Three.js addon)** — Loading `.glb` 3D models
-- **Google Fonts** — Plus Jakarta Sans (variable weights 400–800)
+    <h2>✨ Features You Can’t Ignore</h2>
+    <ul>
+        <li><strong>🏠 The Hero Zone:</strong> Animated intros and social links.</li>
+        <li><strong>🔄 The Mischief Toggle:</strong> Flip between "Funny" and "Flirty" modes.</li>
+        <li><strong>🧊 3D Sandbox:</strong> Interactive 3D model viewer with rotation/zoom.</li>
+        <li><strong>🏃 Buri Buri Dash:</strong> 3D endless runner game with collision detection.</li>
+        <li><strong>📊 Skills Matrix:</strong> Categorized grid of my tech stack.</li>
+        <li><strong>🎨 Neo-Brutalist Design:</strong> Thick borders and hard shadows.</li>
+    </ul>
 
----
+    <h2>🎢 Behind the Scenes: The Shinchan Way</h2>
+    <ul>
+        <li><strong>The 3D Struggle:</strong> Learned that gravity is just a suggestion in WebGL!</li>
+        <li><strong>Physics Fun:</strong> Writing the game felt like coding for a sentient toddler.</li>
+        <li><strong>The Content Switcher:</strong> Coding the "Flirty" mode at 3 AM was a core memory.</li>
+    </ul>
 
-### ✨ Features
+    <blockquote>"I’m not lazy, I’m just on energy-saving mode." — Harsh Singh</blockquote>
 
-- **🏠 Hero Section** — Animated intro card with Shinchan GIF embed, social links (LinkedIn, GitHub), and a Hindi dialogue banner
-- **🔄 Mischief Mode Toggle** — Switches entire page content between "Funny" and "Flirty" modes dynamically (titles, descriptions, project cards, contact section)
-- **🧊 3D Sandbox Viewer** — Interactive 3D viewport with drag-to-rotate, auto-rotation, and zoom in/out controls; loads `shinchan.glb` with a red cube fallback
-- **🏃 3D Buri Buri Dash Game** — Endless runner built entirely in Three.js
-  - Player character (GLB model or fallback block figure)
-  - Procedurally spawned obstacles: **stones**, **rocks**, **books**, **fountains**
-  - Jump physics (velocity + gravity simulation)
-  - Collision detection (radial distance calculation)
-  - Real-time score counter with zero-padded display
-  - Start/restart overlay system
-  - Keyboard (`Space`, `ArrowUp`) and click/tap input support
-- **📊 Skills Matrix** — Categorized grid displaying Programming Languages, ML/AI, Data Science, Web Dev, Databases, Tools, and CS Fundamentals
-- **📁 Projects Section** — Cards for **DoScree** (NLP Resume Screening) and **Aide** (System Automation Framework)
-- **📬 Contact Hub** — Email, phone, and a themed flirt-script banner
-- **🎨 Comic / Neo-Brutalist Design** — Thick borders, hard box shadows, dotted grid background, skewed/rotated elements, badge-style labels
+    <h2>🚀 How to Run the Chaos</h2>
+    <ol>
+        <li><strong>Clone:</strong> <code>git clone https://github.com/YOUR_USERNAME/HarShin-Portfolio.git</code></li>
+        <li><strong>Open:</strong> Open <code>index.html</code> in your browser.</li>
+        <li><strong>Customize:</strong> Swap the <code>shinchan.glb</code> for your own model.</li>
+    </ol>
 
----
+    <h2>📬 Connect with Me</h2>
+    <ul>
+        <li><a href="YOUR_LINKEDIN_URL">LinkedIn</a></li>
+        <li><a href="YOUR_GITHUB_URL">GitHub</a></li>
+        <li><a href="mailto:YOUR_EMAIL@example.com">Email Me</a></li>
+    </ul>
 
-### 🎨 Design System
-
-- **Background** — Off-white (`#fcf9f2`) with radial dot grid pattern (`bg-comic-grid`)
-- **Borders** — 4px solid black (`border-neutral-900`)
-- **Shadows** — Hard offset shadows (`shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]`)
-- **Colors** — Yellow (`#facc15`), Red (`#ef4444`), Pink (`#ec4899`), Indigo (`#6366f1`), Emerald (`#34d399`)
-- **Typography** — Plus Jakarta Sans, monospace for code/tags
-- **Animations** — Floating pepper effect, text twist, pulse loader
-
-2. Open `index.html` in any modern browser
-3. (Optional) Add `shinchan.glb` to the root for 3D model support
-4. No build tools or server required — fully static
+</body>
+</html>
