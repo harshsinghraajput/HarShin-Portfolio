@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Singh — Portfolio Matrix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcf9f2;
+            color: #1a1a1c;
+            transition: background-color 0.3s ease;
+        }
+        .bg-comic-grid {
+            background-image: radial-gradient(#e6dfd5 2.5px, transparent 2.5px);
+            background-size: 30px 30px;
+        }
+        @keyframes pepper-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(15deg); }
+        }
+        @keyframes text-twist {
+            0%, 100% { transform: scale(1) rotate(-1.5deg); }
+            50% { transform: scale(1.02) rotate(1deg); }
+        }
+        .animate-pepper { animation: pepper-float 3s ease-in-out infinite; }
+        .animate-twist { animation: text-twist 2.5s ease-in-out infinite; }
+    </style>
+</head>
+<body class="selection:bg-yellow-300 selection:text-neutral-900 antialiased relative min-h-screen overflow-x-hidden bg-comic-grid">
+
+    <!-- Ambient Visual Background Frames -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-5">
+        <iframe src="https://gifs.alphacoders.com/gifs/view/209559" class="absolute w-64 h-64 top-10 left-10 border-none"></iframe>
+        <iframe src="https://www.pinterest.com/pin/112378953192692940/" class="absolute w-64 h-64 top-1/3 right-10 border-none"></iframe>
+        <iframe src="https://www.pinterest.com/pin/24418022968893834/" class="absolute w-64 h-64 bottom-20 left-12 border-none"></iframe>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-[#fcf9f2]/90 backdrop-blur-md border-b-4 border-neutral-900">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-black text-2xl tracking-tight z-10 font-mono text-neutral-900">HARSH<span class="text-red-500">_</span>SHIN<span class="text-yellow-500">!</span></a>
+            
+            <nav class="hidden lg:flex items-center space-x-4 text-xs font-black uppercase tracking-wider text-neutral-700 z-10">
+                <a href="#work" class="hover:bg-yellow-300 bg-white border-2 border-neutral-900 px-2.5 py-1 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">Projects</a>
+                <a href="#model-3d" class="hover:bg-yellow-300 bg-white border-2 border-neutral-900 px-2.5 py-1 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">3D Sandbox</a>
+                <a href="#skills" class="hover:bg-yellow-300 bg-white border-2 border-neutral-900 px-2.5 py-1 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">Skills</a>
+                <a href="#arcade" class="hover:bg-yellow-300 bg-white border-2 border-neutral-900 px-2.5 py-1 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">3D Buri Dash</a>
+                <a href="https://www.linkedin.com/in/harsh-singh-03b672220/" target="_blank" class="bg-blue-500 text-white border-2 border-neutral-900 px-2.5 py-1 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-blue-600 transition-all">LinkedIn</a>
+                <a href="https://github.com/harshsinghraajput" target="_blank" class="bg-neutral-800 text-white border-2 border-neutral-900 px-2.5 py-1 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-neutral-700 transition-all">GitHub</a>
+            </nav>
+
+            <!-- Dynamic State Control Pill Interactivity Link -->
+            <div class="flex items-center space-x-2 z-10">
+                <button onclick="toggleMischiefState()" id="mischief-toggle-btn" class="bg-emerald-400 hover:bg-yellow-300 text-neutral-950 border-2 border-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider transition-all transform active:scale-95">
+                    ⚡ Mode: Funny
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 relative z-10 py-12 space-y-16">
+        
+        <!-- Hero Section Wrapper Card -->
+        <section class="bg-white border-4 border-neutral-900 rounded-3xl p-8 md:p-14 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative overflow-hidden">
+            
+            <div class="lg:col-span-7 max-w-2xl">
+                <div id="hero-tag" class="inline-block text-xs font-black tracking-widest uppercase bg-yellow-400 text-neutral-950 border-2 border-neutral-900 px-3 py-1.5 rounded-md mb-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    IT Graduate Entry Node // Action Kamen Stack Core
+                </div>
+                
+                <h1 id="hero-title" class="text-3xl md:text-5xl font-black tracking-tight leading-[1.2] text-neutral-900 mb-6">
+                    Hey, I'm Harsh! Twisting boring adult corporate logic into <span class="bg-red-500 px-2 text-white border-2 border-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">unstoppable code</span>.
+                </h1>
+
+                <!-- SUPER VISIBLE DIALOGUE BANNER -->
+                <div id="hindi-banner" class="bg-yellow-300 border-4 border-black p-4 rounded-xl my-6 shadow-[5px_5px_0px_0px_#000] transform -rotate-1">
+                    <span id="hindi-banner-tag" class="block text-[11px] font-black uppercase text-red-600 tracking-widest">🔥 ATTENTION RECRUITER:</span>
+                    <p id="hindi-banner-text" class="text-base font-extrabold text-neutral-900 leading-snug">
+                        "Misae ke gusse se aur production bugs se bachna dono hi bohot mushkil hai! Hehehe! 😉 Chaloge kya mere saath interview schedule karne?"
+                    </p>
+                </div>
+                
+                <!-- Context speech bubble element container -->
+                <div class="bg-amber-100 border-2 border-neutral-900 p-4 rounded-xl relative my-4 animate-twist shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <div id="bubble-tag" class="absolute -top-3 left-6 bg-red-500 text-white font-black text-[9px] uppercase px-1.5 py-0.5 rounded border border-black">Shinchan Context Filter:</div>
+                    <p id="bubble-text" class="text-xs font-black text-neutral-800 leading-relaxed italic">
+                        "Adults call it 'Synergistic Enterprise Data Analysis Lifecycle', but I call it making messy records do the Buri Buri dance together! Why are corporate forms so long anyway?"
+                    </p>
+                </div>
+
+                <p id="hero-bio" class="text-sm text-neutral-700 font-bold leading-relaxed mb-6">
+                    Versatile Information Technology graduate with a strong foundation in software engineering, data analytics, and artificial intelligence. Proficient in building data-driven architectural solutions.
+                </p>
+
+                <!-- Embedded Social Access Graph Grid Elements -->
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://www.linkedin.com/in/harsh-singh-03b672220/" target="_blank" class="bg-blue-600 text-white border-4 border-neutral-900 px-6 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-blue-700 transition-all transform active:translate-y-1 active:shadow-none">
+                        Connect On LinkedIn 🌐
+                    </a>
+                    <a href="https://github.com/harshsinghraajput" target="_blank" class="bg-neutral-900 text-white border-4 border-neutral-900 px-6 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-neutral-800 transition-all transform active:translate-y-1 active:shadow-none">
+                        Explore Open GitHub 💻
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Main Character Image Container -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center">
+                <div class="bg-neutral-100 border-4 border-neutral-900 p-4 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] w-full max-w-[320px] text-center relative overflow-hidden">
+                    <div class="absolute -top-1 -right-1 bg-yellow-400 border-2 border-neutral-900 font-black text-[9px] px-2 py-0.5 rounded transform rotate-12 uppercase tracking-tight z-20">
+                        Pretty Please! 🥺
+                    </div>
+                    <div class="w-full h-56 rounded-xl border-2 border-neutral-900 overflow-hidden bg-white mb-2 relative">
+                        <iframe src="https://tenor.com/embed/10046714" class="absolute inset-0 w-full h-full pointer-events-none scale-110" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="text-[10px] font-black text-neutral-700 uppercase tracking-wider font-mono">PUPPY_EYES_STANCE_ACTIVE</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D SHINCHAN GLB VIEWPORT -->
+        <section id="model-3d" class="bg-white border-4 border-neutral-900 rounded-3xl p-8 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
+            <div class="absolute top-4 right-4 bg-indigo-500 text-white font-black text-[10px] px-2 py-1 rounded border-2 border-black transform rotate-2 uppercase">
+                Tactile Zoom Rig Active
+            </div>
+            
+            <div class="mb-6">
+                <h2 class="text-xs font-black tracking-widest uppercase bg-purple-300 text-neutral-950 border-2 border-neutral-900 px-3 py-1.5 rounded-md inline-block shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    3D Sandbox Terminal
+                </h2>
+                <h3 class="text-xl font-black mt-3">Drag to rotate model matrix!</h3>
+                <p class="text-xs font-bold text-neutral-500 mt-1">
+                    Defaults are set wide for clear parsing. Drop your custom <code class="bg-neutral-100 px-1 py-0.5 rounded text-neutral-900 border border-neutral-300">shinchan.glb</code> inside the server root to override template vector blocks.
+                </p>
+            </div>
+
+            <div class="border-4 border-neutral-900 rounded-2xl overflow-hidden bg-neutral-950 shadow-[4px_4px_0px_0px_#000] relative">
+                <div class="absolute top-4 left-4 z-30 flex space-x-2">
+                    <button onclick="zoom3DModel(-0.8)" class="bg-white text-neutral-900 border-2 border-neutral-900 font-black text-xs px-3 py-1.5 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-yellow-300 transition-colors">
+                        ➕ Zoom In
+                    </button>
+                    <button onclick="zoom3DModel(0.8)" class="bg-white text-neutral-900 border-2 border-neutral-900 font-black text-xs px-3 py-1.5 rounded shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-yellow-300 transition-colors">
+                        ➖ Zoom Out
+                    </button>
+                </div>
+
+                <div id="three-loader" class="absolute inset-0 bg-neutral-950 flex flex-col items-center justify-center text-center p-4 z-10 pointer-events-none transition-opacity duration-500">
+                    <div class="text-yellow-400 font-mono font-black text-xs animate-pulse uppercase">Assembling WebGL Pipeline Canvas...</div>
+                </div>
+                <div id="canvas-3d-target" class="w-full h-72 sm:h-96 cursor-grab active:cursor-grabbing"></div>
+            </div>
+        </section>
+
+        <!-- SYSTEM SKILLS MATRIX SECTION -->
+        <section id="skills" class="bg-white border-4 border-neutral-900 rounded-3xl p-8 md:p-12 shadow-[10px_10px_0px_0px_rgba(28,28,30,1)] relative overflow-hidden">
+            <div class="mb-8 border-b-4 border-neutral-100 pb-4">
+                <h2 class="text-xs font-black tracking-widest uppercase bg-yellow-300 text-neutral-950 border-2 border-neutral-900 px-3 py-1.5 rounded-md inline-block shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                    Skills
+                </h2>
+                <h3 class="text-xl font-black text-neutral-900 mt-2">Full Core Engineering Credentials Inventory</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+                <div class="p-5 rounded-2xl bg-neutral-50 border-4 border-neutral-900 shadow-[4px_4px_0px_0px_#000]">
+                    <div class="font-black text-sm text-red-500 font-mono uppercase tracking-tight mb-2">💻 Programming Languages</div>
+                    <p class="text-xs font-bold text-neutral-700 leading-relaxed">Python, C, C++, JavaScript, SQL, HTML5, CSS</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-neutral-50 border-4 border-neutral-900 shadow-[4px_4px_0px_0px_#000]">
+                    <div class="font-black text-sm text-indigo-600 font-mono uppercase tracking-tight mb-2">🤖 Machine Learning & AI</div>
+                    <p class="text-xs font-bold text-neutral-700 leading-relaxed">Linear Regression, Logistic Regression, Decision Trees, Random Forest, SVM, KNN, K-Means, Deep Learning, NLP, Neural Networks, TensorFlow, Keras, Scikit-Learn</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-neutral-50 border-4 border-neutral-900 shadow-[4px_4px_0px_0px_#000]">
+                    <div class="font-black text-sm text-emerald-600 font-mono uppercase tracking-tight mb-2">📊 Data Science & Analytics</div>
+                    <p class="text-xs font-bold text-neutral-700 leading-relaxed">Exploratory Data Analysis (EDA), Data Cleaning, Data Visualization, NumPy, Pandas, Matplotlib, Seaborn, Plotly, Jupyter</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-neutral-50 border-4 border-neutral-900 shadow-[4px_4px_0px_0px_#000]">
+                    <div class="font-black text-sm text-purple-600 font-mono uppercase tracking-tight mb-2">🌐 Web Development</div>
+                    <p class="text-xs font-bold text-neutral-700 leading-relaxed">React.js, Node.js, Express.js, Flask, REST APIs, Bootstrap, Tailwind CSS, EJS</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-neutral-50 border-4 border-neutral-900 shadow-[4px_4px_0px_0px_#000]">
+                    <div class="font-black text-sm text-amber-600 font-mono uppercase tracking-tight mb-2">🗄️ Databases</div>
+                    <p class="text-xs font-bold text-neutral-700 leading-relaxed">PostgreSQL, MySQL</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-neutral-50 border-4 border-neutral-900 shadow-[4px_4px_0px_0px_#000]">
+                    <div class="font-black text-sm text-pink-600 font-mono uppercase tracking-tight mb-2">⚙️ Tools & Platforms</div>
+                    <p class="text-xs font-bold text-neutral-700 leading-relaxed">Git, GitHub, VS Code</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-neutral-50 border-4 border-neutral-900 shadow-[4px_4px_0px_0px_#000] sm:col-span-2 lg:col-span-3">
+                    <div class="font-black text-sm text-neutral-900 font-mono uppercase tracking-tight mb-2">🏛️ CS Fundamentals</div>
+                    <p class="text-xs font-bold text-neutral-700 leading-relaxed">Data Structures, Algorithms, Computer Architecture, Information Security</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Projects Section -->
+        <section id="work" class="bg-white border-4 border-neutral-900 rounded-3xl p-8 md:p-12 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] relative">
+            <div class="flex items-center justify-between mb-12 border-b-4 border-neutral-100 pb-6">
+                <h2 class="text-xs font-black tracking-widest uppercase bg-pink-300 text-neutral-950 border-2 border-neutral-900 px-3 py-1.5 rounded-md shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Production Infrastructure</h2>
+                <span class="text-xs font-mono font-bold text-red-500 bg-red-50 border border-red-200 px-2 py-0.5 rounded">Screndered matrix logs</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1: DoScree -->
+                <div class="border-4 border-neutral-900 rounded-2xl p-6 bg-amber-50/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between relative overflow-hidden">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-neutral-900 text-white font-mono text-[10px] px-2 py-0.5 rounded font-black">NLP ALGORITHMIC ENGINE</span>
+                            <span class="text-lg">🪨</span>
+                        </div>
+                        <h3 class="text-lg font-black text-neutral-900 mb-2">DoScree — Resume Screening Matrix</h3>
+                        <p id="proj1-desc" class="text-xs text-neutral-600 font-bold leading-relaxed mb-4">
+                            Engineered an automated script pattern processing raw content layout frameworks via precise text vectorization configurations and TF-IDF modules, capturing 85% accuracy thresholds.
+                        </p>
+                    </div>
+                    <div class="text-[10px] font-mono font-bold text-neutral-400 border-t border-neutral-200 pt-2">PYTHON // NLP // SCUTTLED_PANDAS</div>
+                </div>
+
+                <!-- Project 2: Aide -->
+                <div class="border-4 border-neutral-900 rounded-2xl p-6 bg-purple-50/60 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between relative overflow-hidden">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-neutral-900 text-white font-mono text-[10px] px-2 py-0.5 rounded font-black">SYSTEM AUTOMATION LOGS</span>
+                            <span class="text-lg">💎</span>
+                        </div>
+                        <h3 class="text-lg font-black text-neutral-900 mb-2">Aide — Integration Framework</h3>
+                        <p id="proj2-desc" class="text-xs text-neutral-600 font-bold leading-relaxed mb-4">
+                            Developed standalone system terminal loops mapping runtime configurations alongside external video capture hooks and local speech command parameters seamlessly.
+                        </p>
+                    </div>
+                    <div class="text-[10px] font-mono font-bold text-neutral-400 border-t border-neutral-200 pt-2">PYTHON // SPEECH_APIS // OPENCV</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arcade Module -->
+        <section id="arcade" class="bg-white border-4 border-neutral-900 rounded-3xl p-6 md:p-10 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b-4 border-neutral-100 pb-4">
+                <div>
+                    <h2 class="text-xs font-black tracking-widest uppercase bg-indigo-300 text-neutral-950 border-2 border-neutral-900 px-3 py-1.5 rounded-md inline-block shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                        Mischief Terminal: 3D Buri Buri Dash
+                    </h2>
+                    <p class="text-xs text-neutral-500 font-bold mt-2">Dodge incoming heavy stones, rocks, books, and fountains! Click canvas or press Spacebar to jump.</p>
+                </div>
+                <div class="text-sm font-mono font-black bg-neutral-900 text-white px-5 py-2.5 rounded-xl border-2 border-neutral-900">
+                    SCORE: <span id="game-score" class="text-yellow-400">00000</span>
+                </div>
+            </div>
+
+            <div id="game-container" class="relative w-full h-64 sm:h-80 bg-neutral-900 rounded-2xl overflow-hidden cursor-pointer border-4 border-neutral-900 select-none">
+                <div id="game-start-overlay" class="absolute inset-0 bg-neutral-950/90 flex flex-col items-center justify-center text-center z-30 p-4 transition-opacity duration-300">
+                    <span class="text-xs text-yellow-400 font-black uppercase tracking-widest">START 3D SHINCHAN GLB RUNNER</span>
+                    <p class="text-[10px] text-neutral-400 font-bold mt-1 uppercase">Click window layer area to jump over obstacles</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lower-Most Contact Hub -->
+        <section id="contact" class="bg-neutral-900 text-white rounded-3xl p-8 md:p-12 shadow-[8px_8px_0px_0px_#eab308] border-4 border-neutral-950 relative z-10">
+            
+            <div class="bg-gradient-to-r from-red-600 to-pink-600 border-4 border-white p-5 rounded-xl max-w-xl mb-8 shadow-[5px_5px_0px_0px_#000] transform -rotate-1 animate-twist">
+                <div id="flirt-script-title" class="text-[11px] uppercase font-black tracking-widest text-yellow-300 font-mono">⚠️ Shinnosuke Flirting Script Engaged:</div>
+                <p id="flirt-script-text" class="text-base font-black text-white mt-1 italic leading-snug">
+                    "Hey beautiful HR Recruiter! Do you like Chocobi biscuits? 🍫 Aur kya aap mere clean code loops dekh kar mujhse impress ho gayi hain? Haaye, main toh sharam se laal ho gaya! Hehehe! 😉"
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                <div class="md:col-span-7">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4 leading-tight">Let's set up a new execution pipeline!</h2>
+                    <p class="text-neutral-400 font-bold text-xs max-w-sm leading-relaxed">
+                        Open for software tracks, engineering analytics components, design configurations, and data systems management pipelines.
+                    </p>
+                </div>
+
+                <div class="md:col-span-5 md:text-right space-y-4">
+                    <div class="text-[10px] font-black tracking-widest uppercase text-yellow-400 font-mono">Communication Interface Address</div>
+                    <a href="mailto:iamharshsinghrajput@gmail.com" class="block text-base sm:text-lg md:text-xl font-bold tracking-tight text-white hover:text-yellow-400 transition-colors font-mono break-all">
+                        iamharshsinghrajput@gmail.com
+                    </a>
+                    <div class="text-neutral-300 text-xs font-mono font-black mt-1">+91 9044404057</div>
+                </div>
+            </div>
+
+            <div class="border-t border-neutral-800 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-neutral-500 gap-4">
+                <div>&copy; 2026 Harsh Singh. All Rights Reserved.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="h-12 w-full"></div>
+
+    <!-- Script Blocks for Engine Drivers -->
+    <script>
+        // --- 1. Real-Time Mischief Mode Switching Logic ---
+        let isFlirtyMode = false;
+
+        const contentData = {
+            funny: {
+                toggleBtn: "⚡ Mode: Funny",
+                heroTag: "IT Graduate Entry Node // Action Kamen Stack Core",
+                heroTitle: "Hey, I'm Harsh! Twisting boring adult corporate logic into <span class='bg-red-500 px-2 text-white border-2 border-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'>unstoppable code</span>.",
+                hindiTag: "🔥 ATTENTION RECRUITER:",
+                hindiText: '"Misae ke gusse se aur production bugs se bachna dono hi bohot mushkil hai! Hehehe! 😉 Chaloge kya mere saath interview schedule karne?"',
+                bubbleTag: "Shinchan Context Filter:",
+                bubbleText: '"Adults call it \'Synergistic Enterprise Data Analysis Lifecycle\', but I call it making messy records do the Buri Buri dance together! Why are corporate forms so long anyway?"',
+                heroBio: "Versatile Information Technology graduate with a strong foundation in software engineering, data analytics, and artificial intelligence. Proficient in building data-driven architectural solutions.",
+                proj1: "Engineered an automated script pattern processing raw content layout frameworks via precise text vectorization configurations and TF-IDF modules, capturing 85% accuracy thresholds.",
+                proj2: "Developed standalone system terminal loops mapping runtime configurations alongside external video capture hooks and local speech command parameters seamlessly.",
+                flirtScriptTitle: "⚠️ Shinnosuke Flirting Script Engaged:",
+                flirtScriptText: '"Hey beautiful HR Recruiter! Do you like Chocobi biscuits? 🍫 Aur kya aap mere clean code loops dekh kar mujhse impress ho gayi hain? Haaye, main toh sharam se laal ho gaya! Hehehe! 😉"'
+            },
+            flirty: {
+                toggleBtn: "❤️ Mode: Flirty",
+                heroTag: "AI/ML Romance Optimizer // Heartbeat Architecture Module",
+                heroTitle: "Hey beautiful! I'm Harsh. I don't just compile <span class='bg-pink-500 px-2 text-white border-2 border-neutral-900 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'>clean pipelines</span>... I decode your heart loops. 😉",
+                hindiTag: "🌹 LINE MAARU KYA?:",
+                hindiText: '"Kya aap Chocobi khati hain? Kyunki aapki smile mere local state system ko crash kar deti hai! Hehehe! Chalo na, ek sweet si coffee aur remote technical interview schedule karte hain? ❤️"',
+                bubbleTag: "Flirty Neural Optimizer:",
+                bubbleText: '"They say deep reinforcement learning takes millions of iterations to converge, but falling for your design paradigm was a single step global optimum! No training required, gorgeous."',
+                heroBio: "An AI/ML enthusiast who knows that the perfect enterprise prediction matrix means absolutely nothing without chemistry. Specializing in making data smooth and hiring managers blush.",
+                proj1: "Built an intelligent matcher that scores candidates with high precision—but honestly, it would rate our professional compatibility at a flawless 100%. Let's evaluate results together?",
+                proj2: "Advanced automation architecture configured to integrate external system nodes, though it completely freezes up and drops all tasks whenever you step into the room.",
+                flirtScriptTitle: "💘 Critical Overheat Warning:",
+                flirtScriptText: '"Arre waah! Aapka engineering department toh bohot hi amazing hoga, kyunki aapko dekhte hi mera neural network high voltage output dene laga hai! Do you believe in love at first commit? Hehehe! ☕"'
+            }
+        };
+
+        function toggleMischiefState() {
+            isFlirtyMode = !isFlirtyMode;
+            const set = isFlirtyMode ? contentData.flirty : contentData.funny;
+            
+            document.getElementById('mischief-toggle-btn').innerText = set.toggleBtn;
+            document.getElementById('hero-tag').innerText = set.heroTag;
+            document.getElementById('hero-title').innerHTML = set.heroTitle;
+            document.getElementById('hindi-banner-tag').innerText = set.hindiTag;
+            document.getElementById('hindi-banner-text').innerText = set.hindiText;
+            document.getElementById('bubble-tag').innerText = set.bubbleTag;
+            document.getElementById('bubble-text').innerText = set.bubbleText;
+            document.getElementById('hero-bio').innerText = set.heroBio;
+            document.getElementById('proj1-desc').innerText = set.proj1;
+            document.getElementById('proj2-desc').innerText = set.proj2;
+            document.getElementById('flirt-script-title').innerText = set.flirtScriptTitle;
+            document.getElementById('flirt-script-text').innerText = set.flirtScriptText;
+
+            // Change badge colors on switch
+            const btn = document.getElementById('mischief-toggle-btn');
+            if(isFlirtyMode) {
+                btn.classList.replace('bg-emerald-400', 'bg-pink-400');
+                document.body.style.backgroundColor = "#fff5f7";
+            } else {
+                btn.classList.replace('bg-pink-400', 'bg-emerald-400');
+                document.body.style.backgroundColor = "#fcf9f2";
+            }
+        }
+
+        // --- 2. Sandbox 3D Viewport Scripts ---
+        let globalCameraRef = null;
+
+        function init3DStage() {
+            const container3d = document.getElementById('canvas-3d-target');
+            const loaderEl = document.getElementById('three-loader');
+            if(!container3d) return;
+
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0a0a0c);
+
+            const camera = new THREE.PerspectiveCamera(45, container3d.clientWidth / container3d.clientHeight, 0.1, 1000);
+            camera.position.set(0, 0, 7.5);
+            globalCameraRef = camera; 
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(container3d.clientWidth, container3d.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container3d.appendChild(renderer.domElement);
+
+            scene.add(new THREE.AmbientLight(0xffffff, 0.8));
+            const directionalLight = new THREE.DirectionalLight(0xfff5ea, 1.2);
+            directionalLight.position.set(5, 10, 7);
+            scene.add(directionalLight);
+
+            const fallbackMesh = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.2, 1.2), new THREE.MeshStandardMaterial({ color: 0xef4444, roughness: 0.2 }));
+            scene.add(fallbackMesh);
+            let mainModel = fallbackMesh;
+
+            new THREE.GLTFLoader().load('shinchan.glb', function (gltf) {
+                scene.remove(fallbackMesh);
+                mainModel = gltf.scene;
+                const box = new THREE.Box3().setFromObject(mainModel);
+                const center = box.getCenter(new THREE.Vector3());
+                mainModel.position.x += (mainModel.position.x - center.x);
+                mainModel.position.y += (mainModel.position.y - center.y);
+                scene.add(mainModel);
+                if(loaderEl) loaderEl.style.opacity = '0';
+            }, undefined, function (err) {
+                if(loaderEl) loaderEl.style.opacity = '0';
+            });
+
+            let isDragging = false, prevMousePos = { x: 0, y: 0 };
+            container3d.addEventListener('mousedown', () => { isDragging = true; });
+            window.addEventListener('mouseup', () => { isDragging = false; });
+            window.addEventListener('mousemove', (e) => {
+                if (isDragging && mainModel) {
+                    mainModel.rotation.y += (e.offsetX - prevMousePos.x) * 0.01;
+                    mainModel.rotation.x += (e.offsetY - prevMousePos.y) * 0.01;
+                }
+                prevMousePos = { x: e.offsetX, y: e.offsetY };
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                if (!isDragging && mainModel) mainModel.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        function zoom3DModel(amount) {
+            if(globalCameraRef) {
+                globalCameraRef.position.z += amount;
+                if(globalCameraRef.position.z < 3) globalCameraRef.position.z = 3;
+                if(globalCameraRef.position.z > 20) globalCameraRef.position.z = 20;
+            }
+        }
+
+        // --- 3. Upgraded 3D Arcade Running Game Engine (Stones, Rocks, Books, Fountains) ---
+        let gameScene, gameCamera, gameRenderer, gamePlayerMesh, gameFallbackMesh;
+        let gameIsPlaying = false, gameScore = 0;
+        let gameObstacles = [];
+        let gameJumpVelocity = 0, gameIsJumping = false;
+        const playerGroundY = 0;
+        let gamePlayerY = playerGroundY;
+        let gameSpawnTimer = 0;
+        let gameFrameId = null;
+
+        function initArcade3DEngine() {
+            const container = document.getElementById('game-container');
+            const startOverlay = document.getElementById('game-start-overlay');
+            if(!container) return;
+
+            gameScene = new THREE.Scene();
+            gameScene.background = new THREE.Color(0x171717);
+
+            gameCamera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            gameCamera.position.set(0, 2.2, 7.5);
+            gameCamera.lookAt(0, 0.8, 0);
+
+            gameRenderer = new THREE.WebGLRenderer({ antialias: true });
+            gameRenderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(gameRenderer.domElement);
+
+            gameScene.add(new THREE.AmbientLight(0xffffff, 0.7));
+            const light = new THREE.DirectionalLight(0xfff5ea, 1.0);
+            light.position.set(4, 8, 4);
+            gameScene.add(light);
+
+            const ground = new THREE.Mesh(
+                new THREE.BoxGeometry(25, 0.2, 3),
+                new THREE.MeshStandardMaterial({ color: 0x262626, roughness: 0.8 })
+            );
+            ground.position.y = -0.1;
+            gameScene.add(ground);
+
+            const fallbackGroup = new THREE.Group();
+            const body = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.6, 0.5), new THREE.MeshStandardMaterial({ color: 0xef4444 }));
+            body.position.y = 0.3;
+            fallbackGroup.add(body);
+            const head = new THREE.Mesh(new THREE.SphereGeometry(0.28, 16, 16), new THREE.MeshStandardMaterial({ color: 0xfdd1b5 }));
+            head.position.y = 0.75;
+            fallbackGroup.add(head);
+            fallbackGroup.position.set(-2, gamePlayerY, 0);
+            gameScene.add(fallbackGroup);
+            gamePlayerMesh = fallbackGroup;
+
+            new THREE.GLTFLoader().load('shinchan.glb', function(gltf) {
+                gameScene.remove(fallbackGroup);
+                gamePlayerMesh = gltf.scene;
+                const box = new THREE.Box3().setFromObject(gamePlayerMesh);
+                const size = box.getSize(new THREE.Vector3());
+                const maxDim = Math.max(size.x, size.y, size.z);
+                if(maxDim > 0) {
+                    const scalar = 1.1 / maxDim;
+                    gamePlayerMesh.scale.set(scalar, scalar, scalar);
+                }
+                gamePlayerMesh.position.set(-2, gamePlayerY, 0);
+                gameScene.add(gamePlayerMesh);
+            });
+
+            window.addEventListener('keydown', (e) => {
+                if ((e.code === 'Space' || e.code === 'ArrowUp')) {
+                    e.preventDefault();
+                    triggerGameJump();
+                }
+            });
+            container.addEventListener('click', (e) => {
+                e.preventDefault();
+                triggerGameJump();
+            });
+
+            function triggerGameJump() {
+                if (!gameIsPlaying) {
+                    gameIsPlaying = true;
+                    gameScore = 0;
+                    document.getElementById('game-score').innerText = "00000";
+                    startOverlay.style.opacity = '0';
+                    startOverlay.style.pointerEvents = 'none';
+                    gameObstacles.forEach(o => gameScene.remove(o.mesh));
+                    gameObstacles = [];
+                    if (gameFrameId) cancelAnimationFrame(gameFrameId);
+                    gameFrameId = requestAnimationFrame(runGameCoreLoop);
+                } else if (!gameIsJumping) {
+                    gameIsJumping = true;
+                    gameJumpVelocity = 0.22;
+                }
+            }
+
+            function runGameCoreLoop() {
+                if (!gameIsPlaying) return;
+
+                if (gameIsJumping) {
+                    gamePlayerY += gameJumpVelocity;
+                    gameJumpVelocity -= 0.013;
+                    if (gamePlayerY <= playerGroundY) {
+                        gamePlayerY = playerGroundY;
+                        gameIsJumping = false;
+                    }
+                }
+                if (gamePlayerMesh) {
+                    gamePlayerMesh.position.y = gamePlayerY;
+                    gamePlayerMesh.rotation.y += 0.06;
+                }
+
+                gameSpawnTimer++;
+                if (gameSpawnTimer > 75) {
+                    // Random generation between Stone, Rock, Book, and Fountain matrix indices
+                    const randomType = Math.floor(Math.random() * 4);
+                    let obsMesh, obsRadius = 0.25, obsY = 0.15;
+
+                    if (randomType === 0) { // Stone
+                        obsMesh = new THREE.Mesh(new THREE.DodecahedronGeometry(0.25, 0), new THREE.MeshStandardMaterial({ color: 0x71717a, flatShading:true }));
+                        obsRadius = 0.22; obsY = 0.15;
+                    } else if (randomType === 1) { // Rock
+                        obsMesh = new THREE.Mesh(new THREE.DodecahedronGeometry(0.48, 0), new THREE.MeshStandardMaterial({ color: 0x4b5563, flatShading:true }));
+                        obsRadius = 0.38; obsY = 0.26;
+                    } else if (randomType === 2) { // Book
+                        obsMesh = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.2, 0.4), new THREE.MeshStandardMaterial({ color: 0x3b82f6 }));
+                        obsRadius = 0.26; obsY = 0.1;
+                    } else { // Fountain
+                        const fGroup = new THREE.Group();
+                        const base = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.5, 8), new THREE.MeshStandardMaterial({ color: 0xd4d4d8 }));
+                        base.position.y = 0.25; fGroup.add(base);
+                        const water = new THREE.Mesh(new THREE.ConeGeometry(0.25, 0.4, 8), new THREE.MeshStandardMaterial({ color: 0x60a5fa, transparent:true, opacity:0.8 }));
+                        water.position.y = 0.6; fGroup.add(water);
+                        obsMesh = fGroup; obsRadius = 0.32; obsY = 0;
+                    }
+
+                    obsMesh.position.set(5, obsY, 0);
+                    gameScene.add(obsMesh);
+                    gameObstacles.push({ mesh: obsMesh, x: 5, radius: obsRadius, type: randomType });
+                    gameSpawnTimer = 0;
+                }
+
+                for (let i = gameObstacles.length - 1; i >= 0; i--) {
+                    let obs = gameObstacles[i];
+                    obs.x -= 0.095;
+                    obs.mesh.position.x = obs.x;
+                    
+                    if(obs.type === 0 || obs.type === 1) {
+                        obs.mesh.rotation.z += 0.05;
+                    }
+
+                    let targetPlayerX = -2;
+                    let targetPlayerCenterY = gamePlayerY + 0.45;
+                    let deltaX = targetPlayerX - obs.mesh.position.x;
+                    let deltaY = targetPlayerCenterY - obs.mesh.position.y;
+                    let radialDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                    if (radialDistance < (obs.radius + 0.3)) {
+                        gameIsPlaying = false;
+                        startOverlay.style.opacity = '1';
+                        startOverlay.style.pointerEvents = 'auto';
+                        startOverlay.querySelector('span').innerText = "COLLISION DETECTED! CLICK SCREEN TO FLUSH LOGS & RETRY";
+                        return;
+                    }
+
+                    if (obs.x < -5) {
+                        gameScene.remove(obs.mesh);
+                        gameObstacles.splice(i, 1);
+                        gameScore += 10;
+                        document.getElementById('game-score').innerText = String(gameScore).padStart(5, '0');
+                    }
+                }
+
+                gameRenderer.render(gameScene, gameCamera);
+                gameFrameId = requestAnimationFrame(runGameCoreLoop);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            init3DStage();
+            initArcade3DEngine();
+        });
+    </script>
+</body>
+</html>
